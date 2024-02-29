@@ -10,6 +10,14 @@ import Foundation
 @Observable
 class ModelData {
     var landmarks: [Landmark] = load("landmarkData.json")    
+    var categories: [String: [Landmark]] {
+        Dictionary(grouping: landmarks, by: {$0.category.rawValue})
+    }
+    var features: [Landmark] {
+        landmarks.filter { landmark in
+            landmark.isFeatured
+        }
+    }
 }
 
 
