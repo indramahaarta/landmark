@@ -13,6 +13,7 @@ class ModelData {
     var categories: [String: [Landmark]] {
         Dictionary(grouping: landmarks, by: {$0.category.rawValue})
     }
+    var hikes: [Hike] = load("hikeData.json")
     var features: [Landmark] {
         landmarks.filter { landmark in
             landmark.isFeatured
